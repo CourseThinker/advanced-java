@@ -20,7 +20,7 @@ public class StudentA {
  private StudentB studentB;  
   
  public void setStudentB(StudentB studentB) {  
-    this.studentB = studentB;  
+     this.studentB = studentB;  
  }  
  public StudentA() {  
  }  
