@@ -17,8 +17,8 @@
 学习之前，先来看看 [Issues 讨论区](https://github.com/doocs/advanced-java/issues/9#issue-394275038)的技术面试官是怎么说的吧。本项目也欢迎各位开发者朋友来[分享自己的一些想法和实践经验](/docs/from-readers/README.md)。
 
 ## 框架
-### [Spring框架]
-- [Spring 如何解决循环依赖的问题？](/docs/high-concurrency/why-mq.md)
+### Spring框架
+- [Spring如何解决循环依赖的问题?](/docs/spring-frame/circle-resolve-question.md)
 
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
