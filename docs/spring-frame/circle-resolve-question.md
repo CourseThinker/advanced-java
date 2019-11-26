@@ -75,9 +75,13 @@ OK，上面是很基本的3个类，，StudentA有参构造是StudentB。Student
 
 public class Test { 
  public static void main(String[] args) { 
+ 
  ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml"); 
+ 
  //System.out.println(context.getBean("a", StudentA.class)); 
+ 
  } 
+ 
 }
 执行结果报错信息为：
 
@@ -108,9 +112,12 @@ Caused by: org.springframework.beans.factory.BeanCurrentlyInCreationException:
 下面是测试类：
 
 public class Test { 
+
  public static void main(String[] args) { 
- ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml"); 
- System.out.println(context.getBean("a", StudentA.class)); 
+ 
+  ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml"); 
+ 
+  System.out.println(context.getBean("a", StudentA.class)); 
  } 
 }
 打印结果为：
