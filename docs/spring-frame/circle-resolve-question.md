@@ -17,54 +17,53 @@ BeanCurrentlyInCreationException异常表示循环依赖；而对于创建完毕
 
 public class StudentA { 
   
- private StudentB studentB ; 
+ private StudentB studentB;  
   
- public void setStudentB(StudentB studentB) { 
- this.studentB = studentB; 
+ public void setStudentB(StudentB studentB) {  
+    this.studentB = studentB; 
  } 
+ public StudentA() {  
+ }  
   
- public StudentA() { 
- } 
+ public StudentA(StudentB studentB) {  
+    this.studentB = studentB;  
+ }  
+}  
+public class StudentB {  
   
- public StudentA(StudentB studentB) { 
- this.studentB = studentB; 
- } 
-} 
-public class StudentB { 
+ private StudentC studentC;  
+   
+ public void setStudentC(StudentC studentC) {  
+ this.studentC = studentC;  
+ }  
+   
+ public StudentB() {  
+ }  
+   
+ public StudentB(StudentC studentC) {  
+ this.studentC = studentC;  
+ }  
+}  
+public class StudentC {  
   
- private StudentC studentC ; 
+ private StudentA studentA;  
   
- public void setStudentC(StudentC studentC) { 
- this.studentC = studentC; 
- } 
+ public void setStudentA(StudentA studentA) {  
+ this.studentA = studentA;  
+ }  
   
- public StudentB() { 
- } 
+ public StudentC() {  
+ }  
   
- public StudentB(StudentC studentC) { 
- this.studentC = studentC; 
- } 
-} 
-public class StudentC { 
-  
- private StudentA studentA ; 
-  
- public void setStudentA(StudentA studentA) { 
- this.studentA = studentA; 
- } 
-  
- public StudentC() { 
- } 
-  
- public StudentC(StudentA studentA) { 
- this.studentA = studentA; 
- } 
-} 
+ public StudentC(StudentA studentA) {  
+ this.studentA = studentA;  
+ }  
+}  
 OK，上面是很基本的3个类，，StudentA有参构造是StudentB。StudentB的有参构造是StudentC，StudentC的有参构造是StudentA ，
 这样就产生了一个循环依赖的情况，我们都把这三个Bean交给Spring管理，并用有参构造实例化
-<bean id="a" class="com.zfx.student.StudentA"> 
- <constructor-arg index="0" ref="b"></constructor-arg> 
-</bean> 
+<bean id="a" class="com.zfx.student.StudentA">  
+ <constructor-arg index="0" ref="b"></constructor-arg>  
+</bean>  
 <bean id="b" class="com.zfx.student.StudentB"> 
  <constructor-arg index="0" ref="c"></constructor-arg> 
 </bean> 
@@ -101,28 +100,28 @@ Caused by: org.springframework.beans.factory.BeanCurrentlyInCreationException:
 
 <!--scope="singleton"(默认就是单例方式) -->
 <bean id="a" class="com.zfx.student.StudentA" scope="singleton"> 
- <property name="studentB" ref="b"></property> 
+ <property name="studentB" ref="b"></property>  
+</bean>  
+<bean id="b" class="com.zfx.student.StudentB" scope="singleton">  
+ <property name="studentC" ref="c"></property>  
+</bean>  
+<bean id="c" class="com.zfx.student.StudentC" scope="singleton">  
+ <property name="studentA" ref="a"></property>  
 </bean> 
-<bean id="b" class="com.zfx.student.StudentB" scope="singleton"> 
- <property name="studentC" ref="c"></property> 
-</bean> 
-<bean id="c" class="com.zfx.student.StudentC" scope="singleton"> 
- <property name="studentA" ref="a"></property> 
-</bean>
 下面是测试类：
 
-public class Test { 
-
- public static void main(String[] args) { 
- 
-  ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml"); 
- 
-  System.out.println(context.getBean("a", StudentA.class)); 
- } 
-}
+public class Test {  
+  
+ public static void main(String[] args) {  
+  
+  ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml");  
+   
+  System.out.println(context.getBean("a", StudentA.class));  
+ }  
+}  
 打印结果为：
 
-com.zfx.student.StudentA@1fbfd6 
+com.zfx.student.StudentA@1fbfd6   
 
 为什么用set方式就不报错了呢 ？
 我们结合上面那张图看，Spring先是用构造实例化Bean对象 ，此时Spring会将这个实例化结束的对象放到一个Map中，并且Spring提供了获取这个未设置属性的实例化对象引用的方法。   结合我们的实例来看，，当Spring实例化了StudentA、StudentB、StudentC后，紧接着会去设置对象的属性，此时StudentA依赖StudentB，就会去Map中取出存在里面的单例StudentB对象，以此类推，不会出来循环的问题喽、
@@ -151,16 +150,16 @@ com.zfx.student.StudentA@1fbfd6
  * @param beanName the name of the bean 
  * @param singletonFactory the factory for the singleton object 
  */
- protected void addSingletonFactory(String beanName, ObjectFactory singletonFactory) { 
- Assert.notNull(singletonFactory, "Singleton factory must not be null"); 
- synchronized (this.singletonObjects) { 
-  if (!this.singletonObjects.containsKey(beanName)) { 
-  this.singletonFactories.put(beanName, singletonFactory); 
-  this.earlySingletonObjects.remove(beanName); 
-  this.registeredSingletons.add(beanName); 
-  } 
- } 
- } 
+ protected void addSingletonFactory(String beanName, ObjectFactory singletonFactory) {  
+ Assert.notNull(singletonFactory, "Singleton factory must not be null");  
+ synchronized (this.singletonObjects) {  
+  if (!this.singletonObjects.containsKey(beanName)) {  
+  this.singletonFactories.put(beanName, singletonFactory);  
+  this.earlySingletonObjects.remove(beanName);  
+  this.registeredSingletons.add(beanName);  
+  }  
+ }  
+ }  
   
 第三种：setter方式原型，prototype
 
@@ -168,26 +167,26 @@ com.zfx.student.StudentA@1fbfd6
 
 修改配置文件为：
 
-<bean id="a" class="com.zfx.student.StudentA" <span style="color:#FF0000;">scope="prototype"</span>> 
- <property name="studentB" ref="b"></property> 
+<bean id="a" class="com.zfx.student.StudentA" <span style="color:#FF0000;">scope="prototype"</span>>  
+ <property name="studentB" ref="b"></property>  
+ </bean>  
+ <bean id="b" class="com.zfx.student.StudentB" <span style="color:#FF0000;">scope="prototype"</span>>  
+ <property name="studentC" ref="c"></property>  
+ </bean>  
+ <bean id="c" class="com.zfx.student.StudentC" <span style="color:#FF0000;">scope="prototype"</span>>  
+ <property name="studentA" ref="a"></property>  
  </bean> 
- <bean id="b" class="com.zfx.student.StudentB" <span style="color:#FF0000;">scope="prototype"</span>> 
- <property name="studentC" ref="c"></property> 
- </bean> 
- <bean id="c" class="com.zfx.student.StudentC" <span style="color:#FF0000;">scope="prototype"</span>> 
- <property name="studentA" ref="a"></property> 
- </bean>
 scope="prototype" 意思是 每次请求都会创建一个实例对象。两者的区别是：有状态的bean都使用Prototype作用域，无状态的一般都使用singleton单例作用域。
 测试用例：
 
-public class Test { 
- public static void main(String[] args) { 
- ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml"); 
- <strong>//此时必须要获取Spring管理的实例，因为现在scope="prototype" 只有请求获取的时候才会实例化对象</strong> 
- System.out.println(context.getBean("a", StudentA.class)); 
- } 
-} 
-打印结果：
+public class Test {  
+ public static void main(String[] args) {  
+ ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml");  
+ <strong>//此时必须要获取Spring管理的实例，因为现在scope="prototype" 只有请求获取的时候才会实例化对象</strong>  
+ System.out.println(context.getBean("a", StudentA.class));  
+ }  
+}  
+打印结果： 
 
 Caused by: org.springframework.beans.factory.BeanCurrentlyInCreationException:  
     Error creating bean with name 'a': Requested bean is currently in creation: Is there an unresolvable circular reference? 
