@@ -72,6 +72,7 @@ OK，上面是很基本的3个类，，StudentA有参构造是StudentB。Student
  <constructor-arg index="0" ref="a"></constructor-arg> 
 </bean>
 下面是测试类：
+
 public class Test { 
  public static void main(String[] args) { 
  ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml"); 
@@ -93,6 +94,7 @@ Caused by: org.springframework.beans.factory.BeanCurrentlyInCreationException:
 如图中前两步骤得知：Spring是先将Bean对象实例化之后再设置对象属性的
 
 修改配置文件为set方式注入
+
 <!--scope="singleton"(默认就是单例方式) -->
 <bean id="a" class="com.zfx.student.StudentA" scope="singleton"> 
  <property name="studentB" ref="b"></property> 
@@ -104,6 +106,7 @@ Caused by: org.springframework.beans.factory.BeanCurrentlyInCreationException:
  <property name="studentA" ref="a"></property> 
 </bean>
 下面是测试类：
+
 public class Test { 
  public static void main(String[] args) { 
  ApplicationContext context = new ClassPathXmlApplicationContext("com/zfx/student/applicationContext.xml"); 
@@ -133,6 +136,7 @@ com.zfx.student.StudentA@1fbfd6
  /** 
  * 添加单例实例 
  * 解决循环引用的问题 
+  
  * Add the given singleton factory for building the specified singleton 
  * if necessary. 
  * <p>To be called for eager registration of singletons, e.g. to be able to 
@@ -150,11 +154,13 @@ com.zfx.student.StudentA@1fbfd6
   } 
  } 
  } 
+  
 第三种：setter方式原型，prototype
 
 对于"prototype"作用域bean，Spring容器无法完成依赖注入，因为Spring容器不进行缓存"prototype"作用域的bean，因此无法提前暴露一个创建中的bean。
 
 修改配置文件为：
+
 <bean id="a" class="com.zfx.student.StudentA" <span style="color:#FF0000;">scope="prototype"</span>> 
  <property name="studentB" ref="b"></property> 
  </bean> 
