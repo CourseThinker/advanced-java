@@ -20,6 +20,9 @@
 ### Spring框架
 - [Spring如何解决循环依赖的问题?](/docs/spring-frame/circle-resolve-question.md)
 
+## 数据库
+### MySQL
+
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
 - [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点？](/docs/high-concurrency/why-mq.md)
