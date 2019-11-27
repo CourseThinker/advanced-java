@@ -16,4 +16,4 @@ Mysql索引数据结构B-Tree?
 要介绍 B+ 树索引，就不得不提二叉查找树，平衡二叉树和 B 树这三种数据结构。B+ 树就是从他们仨演化来的。
 
 **二叉查找树**
-![\docs\mysql-interview\images\二叉树.png]
+![/docs/mysql-interview/images/二叉树.png]
