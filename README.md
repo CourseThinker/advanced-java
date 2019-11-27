@@ -33,7 +33,7 @@
 - [如何保证消息的顺序性？](/docs/high-concurrency/how-to-ensure-the-order-of-messages.md)
 - [如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？](/docs/high-concurrency/mq-time-delay-and-expired-failure.md)
 - [如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路。](/docs/high-concurrency/mq-design.md)
-- [热门面试题：消息中间件消费到的消息处理失败怎么办？的【满分】回答！](https://mp.weixin.qq.com/s/mvLza4CT4S5S8mzPuMSydg)
+- [热门面试题：消息中间件消费到的消息处理失败怎么办？的【满分】回答！](https://mp.weixin.qq.com/s?__biz=MzU0OTk3ODQ3Ng==&mid=2247485221&idx=1&sn=6d6b4e6bfd6eeb1c14ca20fcf586bb8b&chksm=fba6ef26ccd166300aeb23ee504ea2f402a03a917fd3ca72324891ccfb6e8fbd384e2d70a342&mpshare=1&scene=24&srcid=1127sBx5Cijqgi1xjPxCruLI&sharer_sharetime=1574850183084&sharer_shareid=e776cb18255aa0ac8e9523b0ea9b433a#rd)
 
 ### [搜索引擎](/docs/high-concurrency/es-introduction.md)
 - [es 的分布式架构原理能说一下么（es 是如何实现分布式的啊）？](/docs/high-concurrency/es-architecture.md)
