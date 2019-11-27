@@ -175,10 +175,11 @@ select * from user where luckNum=33
 ![](/docs/mysql-interview/images/B树-7.png)  
 在 MyISAM 中，聚集索引和非聚集索引的叶子节点都会存储数据的文件地址。  
 **总结**
-`
-本篇文章从二叉查找树，详细说明了为什么 MySQL 用 B+ 树作为数据的索引，以及在 InnoDB 中数据库如何通过 B+ 树索引来存储数据以及查找数据。
-我们一定要记住这句话：数据即索引，索引即数据。
-`
+
+> 本篇文章从二叉查找树，详细说明了为什么 MySQL 用 B+ 树作为数据的索引，以及在 InnoDB 中数据库如何通过 B+ 树索引来存储数据以及查找数据。
+> 我们一定要记住这句话：数据即索引，索引即数据。
+
+引用：[](https://mp.weixin.qq.com/s?__biz=MzU0OTk3ODQ3Ng==&mid=2247486613&idx=1&sn=da9de7105d0a4b57727c8f2da01a8ca1&chksm=fba6e496ccd16d80f8cae0591f995fa2b91832c70beee7d6b9d7cd1423cd3ed4f315d7c08e1d&scene=0&xtrack=1#rd)
 
 
 
