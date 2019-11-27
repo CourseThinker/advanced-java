@@ -22,6 +22,7 @@
 
 ## 数据库
 ### MySQL
+- [Mysql索引数据结构B树?](/docs/mysql-interview/index-data-structure(B+Tree).md)
 
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
