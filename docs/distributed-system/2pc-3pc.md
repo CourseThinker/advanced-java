@@ -16,12 +16,12 @@ P（Partition Tolerance）分区容忍性   即使节点之间的连接关闭，
 
 CAP理论认为，任何联网的共享数据系统智能实现三个属性中的两个，但是可以通过明确处理分区，优化一致性和可用性，从而实现三者之间的某种权衡  
 
-* 2.zookeeper提供的一致性服务
+**2.zookeeper提供的一致性服务**  
 很多文章和博客里提到，zookeeper是一种提供强一致性的服务，在分区容错性和可用性上做了一定折中，这和CAP理论是吻合的。但实际上zookeeper提供的只是单调一致性。  
 
 **原因：**  
-* 1.假设有2n+1个server，在同步流程中，leader向follower同步数据，当同步完成的follower数量大于 n+1时同步流程结束，系统可接受client的连接请求。如果client连接的并非同步完成的follower，那么得到的并非最新数据，但可以保证单调性。
-* 2.follower接收写请求后，转发给leader处理；leader完成两阶段提交的机制。向所有server发起提案，当提案获得超过半数（n+1）的server认同后，将对整个集群进行同步，超过半数（n+1）的server同步完成后，该写请求完成。如果client连接的并非同步完成follower，那么得到的并非最新数据，但可以保证单调性。
+1.假设有2n+1个server，在同步流程中，leader向follower同步数据，当同步完成的follower数量大于 n+1时同步流程结束，系统可接受client的连接请求。如果client连接的并非同步完成的follower，那么得到的并非最新数据，但可以保证单调性。  
+2.follower接收写请求后，转发给leader处理；leader完成两阶段提交的机制。向所有server发起提案，当提案获得超过半数（n+1）的server认同后，将对整个集群进行同步，超过半数（n+1）的server同步完成后，该写请求完成。如果client连接的并非同步完成follower，那么得到的并非最新数据，但可以保证单调性。
 
 用分布式系统的CAP原则来分析Zookeeper：  
 （1）C: Zookeeper保证了最终一致性,在十几秒可以Sync到各个节点.  
