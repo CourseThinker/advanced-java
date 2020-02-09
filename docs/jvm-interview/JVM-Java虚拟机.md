@@ -34,7 +34,7 @@ Program Counter Register**程序计数器(寄存器)**
 
 ### 1.2.虚拟机栈
 
-![](/images/Jvm-虚拟机栈.png)
+![](images/Jvm-虚拟机栈.png)
 
 #### 1.2.1.定义
 
@@ -169,17 +169,17 @@ public class Stack_03 {
 
   1.用top定位哪个进程对cpu占用很高：top
 
-  ![image-20200203182303138](/images/image-20200203182303138.png)
+  ![image-20200203182303138](images/image-20200203182303138.png)
 
   2.用ps命令查看哪个线程占用cpu很高：
 
   ps H -eo pid,tid,%cpu | grep 进程ID   --  查看进程ID,线程ID,CPU占用情况  --  将十进制的线程ID转换为16进制的值，与jstack pid命令的结果对比，找到对应出现问题的代码；
 
-  ![image-20200203182541149](/images/image-20200203182541149.png)
+  ![image-20200203182541149](images/image-20200203182541149.png)
 
   3.jstack  进程ID   --  查看进程中的线程信息  可以根据线程ID找到有问题的代码信息；
 
-  ![image-20200204132755068](/images/image-20200204132755068.png)
+  ![image-20200204132755068](images/image-20200204132755068.png)
 
 案例二：程序运行很长时间  -- 死锁(deadlock)
 
@@ -220,7 +220,7 @@ public class Stack_04 {
 }
 ```
 
-![image-20200204141234652](/images/image-20200204141234652.png)
+![image-20200204141234652](images/image-20200204141234652.png)
 
 ### 1.3.本地方法栈 -- Native Methed Stacks
 
@@ -351,7 +351,7 @@ java.lang.OutOfMemoryError: Java heap space
 
 #### 1.5.2.组成
 
-![](/images/jvm-方法区.png)
+![](images/jvm-方法区.png)
 
 #### 1.5.3.方法区内存溢出
 
@@ -566,11 +566,11 @@ Direct Memory
 
 传统IO：
 
-![image-20200205154959550](/images/image-20200205154959550.png)
+![image-20200205154959550](images/image-20200205154959550.png)
 
 NIO模型：
 
-![image-20200205155109656](/images/image-20200205155109656.png)
+![image-20200205155109656](images/image-20200205155109656.png)
 
 #### 1.6.2.内存溢出
 
@@ -694,7 +694,7 @@ public class SoftReference_01 {
 
 #### 2.2.1.标记清除
 
-![image-20200205180319941](/images/image-20200205180319941.png)
+![image-20200205180319941](images/image-20200205180319941.png)
 
 过程：1.标记没有Gc Roots引用的对象 2.清除没有使用的内存空间
 
@@ -702,7 +702,7 @@ public class SoftReference_01 {
 
 #### 2.2.2.标记整理
 
-![image-20200205180702167](/images/image-20200205180702167.png)
+![image-20200205180702167](images/image-20200205180702167.png)
 
 过程：1.标记没有被Gc Roots引用的对象 2.整理：将没有被回收的对象移动到一段，减少内存碎片
 
@@ -710,7 +710,7 @@ public class SoftReference_01 {
 
 #### 2.2.3.复制算法
 
-![](/images/image-20200205181314101.png)
+![](images/image-20200205181314101.png)
 
 过程：1.标记没有被Gc Roots引用的对象 2.复制：将没有被回收的对象移动到另一块内存空间，清除之前的内存空间
 
@@ -720,7 +720,7 @@ public class SoftReference_01 {
 
 #### 2.3.1.分代GC
 
-![image-20200205193141048](/images/image-20200205193141048.png)
+![image-20200205193141048](images/image-20200205193141048.png)
 
 
 
@@ -753,7 +753,7 @@ public class SoftReference_01 {
 * 堆内存较小，适合个人电脑  -- cpu个数少
 * -XX:+UseSerialGC = Serial(新生代)  + SerialOld(老年代)
 
-![image-20200206012421714](/images/image-20200206012421714.png)
+![image-20200206012421714](images/image-20200206012421714.png)
 
 串行收集器组合Serial + Serial Old
 
@@ -771,7 +771,7 @@ public class SoftReference_01 {
 * 堆内存较大，多核cpu
 * 让单位时间内，其他线程暂停时间最短
 
-![image-20200206013329623](/images/image-20200206013329623.png)
+![image-20200206013329623](images/image-20200206013329623.png)
 
 并行收集器组合 Parallel Scavenge + Parallel Old  (JDK 7 8 默认垃圾收集器)
 
@@ -789,7 +789,7 @@ public class SoftReference_01 {
 * 堆内存较大，多核cpu
 * 尽可能单次内让其他线程暂停时间最短
 
-![image-20200206014308925](/images/image-20200206014308925.png)
+![image-20200206014308925](images/image-20200206014308925.png)
 
 并发标记清除收集器组合 ParNew + CMS + Serial Old
 
@@ -853,7 +853,7 @@ public class SoftReference_01 {
 * Minor GC的时间远远低于Full GC
 * 新生代内存越大越好吗？
 
-![image-20200206120739509](/images/image-20200206120739509.png)
+![image-20200206120739509](images/image-20200206120739509.png)
 
 * 新生代能够容纳【并发数*（请求-响应）】的内存容量
 
@@ -865,7 +865,7 @@ public class SoftReference_01 {
 
   * -XX:+PrintTenuringDistribution  打印对象年代信息
 
-    ![image-20200206122500423](/images/image-20200206122500423.png)
+    ![image-20200206122500423](images/image-20200206122500423.png)
 
 #### 2.5.5.老年代优化
 
@@ -907,7 +907,7 @@ public class SoftReference_01 {
   *可以通过前面介绍的HSDB工具查看
   ```
 
-  ![image-20200206160340073](/images/image-20200206160340073.png)
+  ![image-20200206160340073](images/image-20200206160340073.png)
 
 ### 3.2.链接
 
@@ -915,7 +915,7 @@ public class SoftReference_01 {
 
   用UE等支持二进制的编译器修改HelloWorld的魔数，在控制台运行
 
-  ![image-20200206160841995](/images/image-20200206160841995.png)
+  ![image-20200206160841995](images/image-20200206160841995.png)
 
 * 准备：为static变量分配空间，设置默认值
   * <span style="color:red">**static变量在JDK7之前存储于instanceKclass末尾，从JDK7开始，存储于_java_mirror末尾**</span>
@@ -1087,25 +1087,462 @@ protected Class<?> loadClass(String name, boolean resolve)
 
 #### 3.4.5.自定义类加载器
 
+## 4.内存模型--JMM
 
+很多人将【java内存结构】与【java内存模型】傻傻分不清，【java内存模型】是java memory model(JMM)的意思。
 
+简单的说，JMM定义了一套在多线程读写共享数据时(成员变量、数组)，对数据的可见性、有序性和原子性的规则和保障。
 
+### 4.1.原子性
 
+#### 4.1.1.问题
 
+问题：两个线程对初始值为0的静态变量一个做自增，一个做自减，各做5000次，结果是0吗？
 
+结果不是；
 
+#### 4.1.2.问题分析
 
+以上的结果可能是正数、负数、零。为什么呢？因为Java中对静态变量的自增，自减并不是原子操作。
 
+例如对于i++而言(i为静态变量)。实际会产生如下的JVM字节码指令：
 
+```java
+getstatic     i  // 获取静态变量的i的值
+iconst_1         // 准备常量1
+iadd			 // 加法
+putstatic        // 将修改后的值存入静态变量i    
+```
 
+而对于的i--：
 
+```java
+getstatic     i  // 获取静态变量的i的值
+iconst_1         // 准备常量1
+isub			 // 减法
+putstatic        // 将修改后的值存入静态变量i    
+```
 
+而Java的内存模型如图所示，完成变量i的自增和自减需要在主内存和线程内存中进行数据交换：
 
+![image-20200207154404710](images/image-20200207154404710.png)
 
+如果为单线程执行就不会出现问题；
 
+#### 4.1.3.解决方法
 
+synchronized（同步关键字）
 
+语法:
 
+```java
+synchronized(对象) {
+    要作为原子操作代码
+}
+```
 
+```java
+public class JMM_01 {
+    static Object obj = new Object();
+    static int count = 0;
 
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(() -> {
+            synchronized (obj) {
+                for (int i = 0; i < 10; i++) {
+                    count++;
+                }
+            }
+        }).start();
 
+        new Thread(() -> {
+            synchronized (obj) {
+                for (int i = 0; i < 9; i++) {
+                    count--;
+                }
+            }
+        }).start();
+        Thread.sleep(5000);
+        System.out.println(count);
+    }
+}
+```
+
+### 4.2.可见性
+
+#### 4.2.1.退不出的循环
+
+先来看一个现象，Main线程对run变量的修改对于t线程不可见，导致了t线程无法停止：
+
+```java
+public class JMM_02 {
+    static boolean run = true;
+
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(() -> {
+            while(run) {
+
+            }
+        }).start();
+        TimeUnit.SECONDS.sleep(1000);
+        run = false; // 线程t不会如预期的停下来
+    }
+}
+```
+
+为什么？分析一下：
+
+1.初始状态，t线程刚开始从主内存读取了run的值到工作内存。
+
+![image-20200207181033485](images/image-20200207181033485.png)
+
+2.因为t线程要频繁从主内存中读取run的值，JIT编译器会将run的值换成至自己工作内存中的高速缓存中，减少对主存中run的访问，提高效率
+
+![image-20200207181325161](images/image-20200207181325161.png)
+
+3. 1秒之后，main线程修改了run的值，并同步至主存，而t是从自己工作内存中的高速缓存中读取这个变量的值，结果永远是旧值
+4. ![image-20200207181536597](images/image-20200207181536597.png)
+
+#### 4.2.2.解决办法
+
+volatile(易变关键字)
+
+它可以用来修饰成员变量和静态成员变量，它可以避免线程从自己的工作缓存中查找变量的值，必须到主内存中获取它的值，线程操作volatile变量都是直接操作主存
+
+#### 4.2.3.可见性
+
+前面例子体现的实际就是可见性，它保证的是在多个线程之间，一个线程对volatile变量的修改对另一个线程可见，不能保证原子性，仅用在一个写线程，多个读线程的情况；
+
+**注意：**
+
+synchronized语句块既可以保证代码块的原子性，也同事保证代码块内变量的可见性。但缺点是synchronized是属于重量级操作，性能相对更低。
+
+如果在前面示例的死循环中加入System.out.println()会发现即使不加volatile修饰符，线程t也能正确看到对run变量的修改了，想一想为什么？
+
+```java
+public void println(String x) {
+    synchronized (this) { // synchronized会强制从主内存读取值
+        print(x);
+        newLine();
+    }
+}
+```
+
+### 4.3.有序性
+
+#### 4.3.1.诡异的结果
+
+```java
+int num = 0;
+boolean ready = false;
+// 线程1 执行此方法
+public void actor1(I_Result r) {
+    if(ready) {
+        r.r1 = num + num;
+    } else {
+        r.r1 = 1;
+    }
+}
+
+// 线程2执行此方法
+public void actor2(I_Result r) {
+    num = 2;
+    ready = true;
+}
+```
+
+I_Result是一个对象，有一个属r1用来保存结果，问，可能的结果又几种？
+
+0,1,4  原因：**代码执行存在指令重排现象；**
+
+#### 4.3.2.解决方法
+
+volatile修改的变量可以禁用指令重排
+
+#### 4.4.3.有序性理解
+
+同一个线程内，JVM会在不影响正确性的前提下，可以调整语句的执行顺序，思考下面一段代码：
+
+```java
+static int i;
+static int j;
+
+// 在某个线程内执行如下赋值操作
+i = ...;// 较为耗时的操作
+j = ...;
+```
+
+可以看到，至于是先执行i还是执行j，对最终的结果不会产生影响，所以，上面的代码真正执行时，既可以是
+
+```java
+i = ...;// 较为耗时的操作
+j = ...;
+```
+
+也可以是
+
+```java
+j = ...;
+i = ...; // 较为耗时的操作
+```
+
+这种特性称为【指令重排】，多线程下【指令重排】会影响正确性，例如著名的double-checked locking模式实现单例
+
+```java
+public final class Singleton {
+    private Singleton() {}
+    private static Singleton INSTANCE = null;
+    private static Singleton getInstance() {
+        // 实例没有创建，才会进入内部的synchronized代码块
+        if(INSTANCE == null) {
+            synchronized(Singleton.class) {
+                // 也许有其他线程已经创建实例，所以在判断一次
+                if(INSTANCE == null) {
+                    INSTANCE = new Singleton();
+                }
+            }
+        }
+    }
+}
+```
+
+以上的实现特点是：
+
+* 懒惰实例化
+* 首次使用getInstance()才使用synchronized加锁，后续使用时无需加锁
+
+但在多线程环境下，上面代码有问题，INSTANCE = new Singleton()对应的字节码为：
+
+```xml
+0: new			#2			// class cn/itcm/jvm/Singleton
+3: dup						
+4: invokespecial#3			// Method "<init>":()V
+7: putstatic    #4			// Field INSTANCE:Lcn/itcm/jvm/Singleton    
+```
+
+其中4 7两步的顺序不是固定的，也许jvm会优化为：先将引用地址赋值给INSTANCE变量后，再执行构造方法，如果两个线程t1，t2按如下时间序列执行：
+
+```xml
+时间1  t1   线程执行到INSTANCE = new Singleton();
+时间2  t1   线程分配空间，为Singleton对象生成了引用地址(0处)
+时间3  t1   线程将引用地址赋值给INSTANCE，这时INSTANCE != null （7处）
+时间4  t2   线程进入getInstance()方法，发现INSTANCE != null(synchrozined块外)，直接返回INSTANCE
+时间5  t1   线程执行Singleton的构造方法(4处)
+```
+
+这时t1还未完全将构造方法执行完毕，如果在构造方法中要执行很多初始化操作，那么t2拿到的将是一个未初始化的单例
+
+对INSTANCE使用volatile修饰即可，可以禁用指令重排，但要注意在JDK 5以上的版本的volatile才会真正有效
+
+#### 4.4.4.happens-before
+
+happens-before规定了那些写操作对其他线程的读操作可见，它是可见性与有序性的一套规则总结：
+
+* 线程解锁m之前对变量的写，对于接下来对m加锁的其他线程对该变量的读可见
+
+```java
+static int x;
+static Object m = new Object();
+new Thread(() -> {
+    synchronized(m) {
+        x = 10;
+    }
+}, "t1").start();
+new Thread(() -> {
+    synchronized(m) {
+        System.out.println(x);
+    }
+}, "t2").start();
+```
+
+* 线程对volatile变量的写，对接下来其他线程对该变量的读可见
+
+```java
+static int x;
+x = 10;
+new Thread(() -> {
+    System.out.println(x);
+}).start();
+```
+
+* 线程结束前对变量的写，对其他线程得知它结束后读可见(比如其它线程调用t1.isAlive()或t1.join()等待它结束)
+* 线程t1打断t2(interrupt)前对变量的写，对于其他线程得知t2被打断后对变量的读可见(通过t2.interrupt或t2.isInterrputed)
+
+### 4.4.CAS与原子类
+
+#### 4.4.1.CAS
+
+CAS即Compare and Swap，它体现的一种乐观锁的思想，比如多个线程要对一个共享的整数变量执行+1操作：
+
+```java
+// 需要不断尝试
+while(true) {
+    int 旧值 = 共享变量; // 比如拿到了当前值0
+    int 结果 = 旧值 + 1; // 在旧值的0的 基础上增加1，正确结果是1
+    /*
+      这时候如果别的线程把共享变量修改成了5，本线程的正确结果 1 就作废	  了，这时候compareAndSwap返回false，重新尝试，直到：
+      compareAndSwap返回true，表示我本线程做修改的同事，别的线程没       有干扰
+    */
+    if(compareAndSwap(旧值，结果)) {
+        // 成功，退出循环
+    }
+}
+```
+
+获取共享变量时，为了保证该变量的可见性，使用需要volatile修饰，结果CAS和volatile可以实现无所并发，适合于竞争不激烈，多核cpu的场景下。
+
+* 因为没有使用synchronized，所以线程不会陷入阻塞，这时效率提升的因素之一
+* 但如果竞争激烈，可以想到重试必然频繁发生，反而效率会受影响
+
+CAS底层依赖于一个Unsafe类来直接调用操作系统底层的CAS指令，下面是直接使用Unsafe对象进行线程安全保护的一个例子：
+
+#### 4.4.2.乐观锁与悲观锁
+
+* CAS是基于乐观锁的思想：最乐观的估计，不怕别的线程来修改共享变量，就算修改了也没有关系，然后在重试
+* synchronized是基于悲观锁的思想：最悲观的估计，得防着其他线程来修改共享变量，我上了锁你们都别想改，等释放了锁，才有机会获取
+
+#### 4.4.3.原子操作类
+
+juc(java.util.concurrent)中提供了原子操作类，可以提供线程安全的操作，例如：atomicInteger、AtomicBoolean等，他们底层就是采用的CAS技术+volatile来实现的。
+
+### 4.5.synchronized优化
+
+Java HotSpot虚拟机中，每个对象都有对象头(包括class指针和Mark Word)。Mark Word平时存储这个对象的哈希码、分代年龄，当加锁时，这些信息就根据情况被替换为标记位、线程锁记录指针、重量级锁指针、线程ID等内容
+
+#### 4.5.1.轻量级锁
+
+如果一个对象虽然有多个线程访问，但多线程访问的时间是错开的(也就是没有竞争)，那么可以使用轻量级锁来优化。这就好比：
+
+学生(线程A)用课本占座，上了半节课，出门了(CPU时间到)，回来一看，发现课本没变，说明没有竞争，继续上他的课。
+
+如果这期间其他学生(线程B)来了，会告知(线程A)有并发访问，线程A随即升级为重量级锁的流程。
+
+而重量级锁就不是那么用课本占座那么简单了，可以想象线程A走之前，把作为用一个铁栅栏围起来，假设有两个方法同步块，利用同一个对象加锁：
+
+```java
+static Object obj = new Object();
+public static void method1() {
+    synchronized(obj) {
+        // 同步块A
+        method2();
+    }
+}
+public static void method2() {
+    synchronized(obj) {
+        // 同步块B
+    }
+}
+```
+
+每个线程的栈帧会包含一个锁记录的结构，内部可以存储锁定对象的Mark Word：
+
+| 线程1                                  | 对象Mark Word             | 线程2                                  |
+| -------------------------------------- | ------------------------- | -------------------------------------- |
+| 访问同步块A，把Mark复制到线程1的锁记录 | 01(无锁)                  | -                                      |
+| CAS修改Mark为线程1锁记录地址           | 01(无锁)                  | -                                      |
+| 成功(加锁)                             | 00(轻量级)线程1锁记录地址 | -                                      |
+| 执行同步块A                            | 00(轻量级)线程1锁记录地址 | -                                      |
+| 访问同步块B，把Mark复制到线程1的锁记录 | 00(轻量级)线程1锁记录地址 | -                                      |
+| CAS修改Mark为线程1锁记录地址           | 00(轻量级)线程1锁记录地址 | -                                      |
+| 失败(发现是自己的锁)                   | 00(轻量级)线程1锁记录地址 | -                                      |
+| 锁重入                                 | 00(轻量级)线程1锁记录地址 | -                                      |
+| 执行同步块B                            | 00(轻量级)线程1锁记录地址 | -                                      |
+| 同步块B执行完毕                        | 00(轻量级)线程1锁记录地址 | -                                      |
+| 同步块A执行完毕                        | 00(轻量级)线程1锁记录地址 | -                                      |
+| 成功(解锁)                             | 01(无锁)                  | -                                      |
+|                                        | 01(无锁)                  | 访问同步块A，把Mark复制到线程2的锁记录 |
+|                                        | 01(无锁)                  | CAS修改Mark为线程2锁记录地址           |
+|                                        | 00(轻量级)线程2锁记录地址 | 成功(加锁)                             |
+
+#### 4.5.2.锁膨胀
+
+如果在尝试加轻量级锁的过程中，CAS操作无法成功，这时一种情况就是其他线程为此对象加上了轻量级锁(有竞争)，这时需要进行锁膨胀，将轻量级锁变为重量级锁。
+
+```java
+static Object obj = new Object();
+public static void method1() {
+    synchronized(obj) {
+        // 同步块
+    }
+}
+```
+
+| 线程1                                 | 对象Mark Word              | 线程2                                  |
+| ------------------------------------- | -------------------------- | -------------------------------------- |
+| 访问同步块，把Mark复制到线程1的锁记录 | 01(无锁)                   | -                                      |
+| CAS修改Mark为线程1锁记录地址          | 01(无锁)                   | -                                      |
+| 成功(加锁)                            | 00(轻量级)线程1锁记录地址  | -                                      |
+| 执行同步块                            | 00(轻量级)线程1锁记录地址  | -                                      |
+| 执行同步块                            | 00(轻量级)线程1锁记录地址  | 访问同步块，把Mark复制到线程2          |
+| 执行同步块                            | 00(轻量级)线程1锁记录地址  | CAS修改为线程2锁记录地址               |
+| 执行同步块                            | 00(轻量级)线程1锁记录地址  | 失败(发现别人已经占了锁)               |
+| 执行同步块                            | 00(轻量级)线程1锁记录地址  | CAS修改Mark为重量锁                    |
+| 执行同步块                            | 10(重量级)重量锁指针       | 阻塞中                                 |
+| 执行完毕                              | 10(重量级)重量锁指针       | 阻塞中                                 |
+| 失败(解锁)                            | 10(重量级)重量锁指针阻塞中 | 阻塞中                                 |
+| 释放重量级锁，唤起阻塞线程竞争        | 10(重量级)                 | 阻塞中                                 |
+|                                       | 10(重量级)                 | 访问同步块A，把Mark复制到线程2的锁记录 |
+|                                       | 10(重量级)                 | CAS修改Mark为线程2锁记录地址           |
+
+#### 4.5.3.重量锁
+
+重量级锁竞争的时候，还可以使用自旋来进行优化，如果当前线程自旋成功，(即这个时候持锁线程已经退出了同步块，释放了锁)，这时当前线程就可以换避免阻塞。
+
+在Java6之后自旋锁是自适应的，比如对象刚刚的一次自旋操作成功过，那么认为这次自旋成功的可能性会高，就多自旋几次，反之，就少自旋甚至不自旋，总之，比较智能。
+
+* 自旋会占用CPU时间，单核CPU自旋就是浪费，多核CPU自旋才能发挥优势
+* 好比等红绿灯汽车是不是熄火，不熄火相当于自旋(等待时间短了划算)，熄火了相当于则色(等待时间长了划算)
+* Java7之后不能控制是否开启自旋功能
+
+自旋重试成功的情况
+
+![image-20200209113530885](images/image-20200209113530885.png)
+
+自旋重试失败的情况
+
+![image-20200209115039052](images/image-20200209115039052.png)
+
+#### 4.5.4.偏向锁
+
+轻量级锁在没有竞争时(就自己这个线程)，每次重入仍然需要执行CAS操作。Java 6中引入了偏向锁来做进一步优化：只有第一次使用CAS将线程ID设置到对象的Mark Word头，之后发现这个线程ID是自己的就表示没有锁竞争，不在重新CAS
+
+* 撤销偏向锁需要将持有线程升级为轻量级锁，这个过程中所有线程需要暂停
+* 访问对象的hashCode也会撤销偏向锁
+* 如果对象虽然被多个线程访问，但没有 竞争，这时偏向了线程T1的对象仍然有机会重新偏向T2，重偏向会重置对象的ThreadID
+* 撤销偏向和重偏向都是批量进行的，以类为单位
+* 如果撤销偏向到达某个阈值，整个类的所有对象都会变成为不可偏向的
+* 可以主动使用-XX:-UseBiasedLocking禁用偏向锁
+
+#### 4.5.5.其他优化
+
+**1.减少上锁时间**
+
+同步代码块中尽量短
+
+**2.减少锁的粒度**
+
+将一个锁拆分为多个锁提高并发度，例如：
+
+* ConcurrentHashMap
+* LongAdder分为base和cells两部分，没有并发争用的额时候或者是cells数组正在初始化的时候，会使用CAS类累加值到base，有并发争用，会初始化cells数组，数组有多少个cell，就允许有多少线程并行修改，最后将数组中每个cell累加，在加上base就是最终的值
+* LinkedBlockingQueue入队和出队使用不同的锁，相当于LinkedBlockingArray只有一个锁效率更高
+
+**3.锁粗化**
+
+多次循环进入同步块不如同步块内多次循环
+
+另外JVM可能会做如下优化，把多次append的加锁操作粗化为一次(因为都是对同一对象加锁，没必要重入多次)
+
+```.java
+new StringBuffer().append("a").append("b");
+```
+
+#### 4.锁消除
+
+JVM会进行代码的逃逸分析，例如某个加锁对象是方法内局部变量，不会被其他线程所访问到，这个时候就会被即时编译器忽略掉所有的同步操作
+
+**5.读写分离**
+
+CopyOnWriteArrayList
+
+ConvOnWriteSet
