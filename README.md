@@ -20,6 +20,20 @@
 ### Spring框架
 - [Spring如何解决循环依赖的问题?](/docs/spring-frame/circle-resolve-question.md)
 
+### Springboot面试题
+
+- [springboot启动过程？](/docs/spring-frame/springboot-iterview.md)
+- [spring bean生命周期？](/docs/spring-frame/spring-bean-time.md)
+- [Spring事务失效的几种原因？](/docs/spring-frame/spring-transaction.md)
+
+### Mybatis
+
+* [mybatis - 缓存、加载](/docs/spring-frame/mybatis-cache.md)
+
+## JVM
+
+### [JVM面试题](/docs/jvm-interview/JVM-Java虚拟机.md)
+
 ## 数据库
 ### MySQL
 - [Mysql索引数据结构B树?](/docs/mysql-interview/index-data-structure(B+Tree).md)
@@ -132,11 +146,3 @@
 - 你所知道的微服务技术栈都有哪些？
 - Eureka 和 Zookeeper 都可以提供服务注册与发现的功能，它们有什么区别？
 
-### Springboot面试题
-- [springboot启动过程？](/docs/spring-frame/springboot-iterview.md)
-- [spring bean生命周期？](/docs/spring-frame/spring-bean-time.md)
-- [Spring事务失效的几种原因？](/docs/spring-frame/spring-transaction.md)
-
-### JVM
-
-* [JVM面试题](/docs/jvm-interview/JVM-Java虚拟机.md)
