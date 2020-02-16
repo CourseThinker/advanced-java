@@ -10,8 +10,8 @@
 
 5.Executor执行Query/queryFromDatabase，在前面经过参数名封装和缓存查询之后（缓存为空），会调用queryFromDatabase方法去数据库当中查；
 
-6.SimpleExecurot执行doQuery()方法，初始化prepareStatement并且给#{}参数赋值
+6.SimpleExecurot执行doQuery()方法，初始化prepareStatement并且给#{}参数赋值；
 
-7.StatementHandler执行query()方法，执行sql语句
+7.StatementHandler执行query()方法，执行sql语句；
 
-8.ResuletHandler.handleResultSets()方法封装结果集
+8.ResuletHandler.handleResultSets()方法封装结果集；
